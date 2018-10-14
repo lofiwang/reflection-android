@@ -9,10 +9,11 @@ import java.lang.reflect.Field;
 public class ReflectionUtil {
     private static final String TAG = "ReflectionUtil";
 
-    public static BuildConfigInfo rBuildConfig(ClassLoader classLoader,String buildConfigPath) {
+    public static BuildConfigInfo rBuildConfig(ClassLoader classLoader, String pkgName) {
+        String buildConfigName = pkgName + ".BuildConfig";
         Class buildConfigClazz = null;
         try {
-            buildConfigClazz = classLoader.loadClass(buildConfigPath);
+            buildConfigClazz = classLoader.loadClass(buildConfigName);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
